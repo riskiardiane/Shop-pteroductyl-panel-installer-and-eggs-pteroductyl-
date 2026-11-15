@@ -1,0 +1,75 @@
+/* AURORA 2.0 — file manager */
+
+.manager_actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+
+    & button {
+        width: 100%;
+
+        &:first-child {
+            grid-column: span 2 / span 2;
+        }
+    }
+
+    @media (min-width: 640px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        & button:first-child {
+            grid-column: span 1 / span 1;
+        }
+    }
+
+    @media (min-width: 768px) {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+        margin-bottom: 0;
+
+        & button {
+            width: auto;
+        }
+    }
+}
+
+.file_row {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: var(--pn-surface);
+    border: 1px solid var(--pn-border);
+    border-radius: var(--pn-radius);
+    margin-bottom: 4px;
+    font-size: 0.84rem;
+    text-decoration: none;
+    color: var(--pn-text-muted);
+    box-shadow: var(--pn-shadow-1);
+    transition: border-color 0.16s var(--pn-ease), background 0.16s var(--pn-ease), transform 0.16s var(--pn-ease),
+        box-shadow 0.16s var(--pn-ease);
+
+    &:hover {
+        background: var(--pn-surface-2);
+        border-color: var(--pn-border-accent);
+        color: var(--pn-text);
+        transform: translateX(4px);
+    }
+
+    & > .details {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        color: inherit;
+        text-decoration: none;
+        padding: 0.6rem 1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &:not(a) {
+            cursor: default;
+        }
+    }
+}

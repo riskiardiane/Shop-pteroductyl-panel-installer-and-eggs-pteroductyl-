@@ -1,0 +1,40 @@
+/* AURORA 2.0 — native Dialog */
+.container { display: flex; min-height: 100%; align-items: center; justify-content: center; padding: 1rem; text-align: center; }
+.panel {
+    position: relative;
+    background: var(--pn-surface);
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 40%);
+    border: 1px solid var(--pn-border);
+    border-radius: var(--pn-radius-xl);
+    max-width: 36rem;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: var(--pn-shadow-2), var(--pn-inner-highlight);
+}
+.title {
+    font-family: var(--pn-font-display);
+    font-size: 1.18rem;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+    color: var(--pn-text);
+    padding-right: 1.75rem;
+}
+.close_icon { width: 1.25rem; height: 1.25rem; transition: transform 0.15s var(--pn-ease); color: var(--pn-text-dim); }
+.close_icon:hover { transform: rotate(90deg); color: var(--pn-primary-600); }
+.dialog_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--pn-radius);
+    margin-right: 1rem;
+    flex-shrink: 0;
+    font-size: 1.05rem;
+}
+.dialog_icon.danger { background: rgba(224, 36, 94, 0.1); color: #b3124f; }
+.dialog_icon.warning { background: rgba(199, 116, 0, 0.12); color: #9a5700; }
+.dialog_icon.success { background: rgba(4, 157, 108, 0.12); color: #037152; }
+.dialog_icon.info { background: var(--pn-primary-soft); color: var(--pn-primary-600); }

@@ -1,0 +1,57 @@
+/* AURORA 2.0 — native Button primitives */
+.button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.05rem;
+    border-radius: var(--pn-radius);
+    border: 1px solid transparent;
+    font-family: var(--pn-font);
+    font-size: 0.85rem;
+    font-weight: 650;
+    line-height: 1.2;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: transform 0.16s var(--pn-ease), box-shadow 0.16s var(--pn-ease), background 0.16s var(--pn-ease),
+        border-color 0.16s var(--pn-ease), color 0.16s var(--pn-ease);
+}
+.button:active { transform: translateY(1px) scale(0.985); }
+.button.small { padding: 0.35rem 0.8rem; height: 2rem; font-size: 0.78rem; font-weight: 600; border-radius: var(--pn-radius-sm); }
+.button.large { padding: 0.7rem 1.3rem; font-size: 0.95rem; }
+.button.square { padding: 0; width: 2.9rem; height: 2.9rem; }
+.button.square.small { width: 2rem; height: 2rem; }
+.button:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+.primary {
+    background: linear-gradient(135deg, #6d52f7 0%, #4f3de0 60%, #3f2fd0 100%);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 14px 28px -14px rgba(84, 61, 224, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    text-shadow: 0 1px 1px rgba(30, 16, 92, 0.35);
+}
+.primary:hover:not(:disabled) { background: linear-gradient(135deg, #7d64ff 0%, #5b49ee 60%, #4736dc 100%); }
+.primary:focus-visible { outline: 2px solid var(--pn-primary); outline-offset: 2px; }
+
+.text {
+    background: linear-gradient(180deg, #ffffff, #fbfaff);
+    border-color: var(--pn-border-strong);
+    color: var(--pn-text);
+    box-shadow: var(--pn-shadow-1);
+}
+.text:hover:not(:disabled) {
+    background: var(--pn-surface-2);
+    border-color: var(--pn-border-accent);
+    color: var(--pn-primary-600);
+}
+.text:focus-visible { outline: 2px solid var(--pn-primary); outline-offset: 2px; }
+
+.danger {
+    background: rgba(224, 36, 94, 0.08);
+    border-color: rgba(224, 36, 94, 0.34);
+    color: #b3124f;
+}
+.danger:hover:not(:disabled) { background: rgba(224, 36, 94, 0.15); }
+.danger:focus-visible { outline: 2px solid var(--pn-danger); outline-offset: 2px; }

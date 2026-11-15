@@ -1,0 +1,25 @@
+# Never commit secrets or build artifacts
+.env
+.env.*
+!.env.example
+!billing.env.example
+
+panel/.env
+panel/.env.*
+!panel/.env.example
+!panel/billing.env.example
+
+panel/public/assets/
+panel/storage/logs/
+panel/storage/framework/cache/
+panel/storage/framework/sessions/
+panel/storage/framework/views/
+panel/storage/framework/data/
+panel/bootstrap/cache/*.php
+panel/vendor/
+panel/node_modules/
+node_modules/
+vendor/
+
+*.log
+.DS_Store

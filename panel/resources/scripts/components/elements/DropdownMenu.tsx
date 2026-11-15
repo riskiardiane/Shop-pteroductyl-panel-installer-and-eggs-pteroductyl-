@@ -1,0 +1,121 @@
+import React, { createRef } from 'react';
+import styled from 'styled-components/macro';
+import tw from 'twin.macro';
+import Fade from '@/components/elements/Fade';
+
+interface Props {
+    children: React.ReactNode;
+    renderToggle: (onClick: (e: React.MouseEvent<any, MouseEvent>) => void) => React.ReactChild;
+}
+
+export const DropdownButtonRow = styled.button<{ danger?: boolean }>`
+    ${tw`p-2 flex items-center rounded w-full`};
+    color: var(--pn-text-muted);
+    font-size: 0.83rem;
+    font-weight: 550;
+    text-align: left;
+    transition: all 0.15s var(--pn-ease);
+
+    &:hover {
+        ${(props) =>
+            props.danger
+                ? `color: #b3124f; background: rgba(224, 36, 94, 0.09);`
+                : `color: var(--pn-primary-600); background: var(--pn-primary-soft);`};
+    }
+`;
+
+interface State {
+    posX: number;
+    visible: boolean;
+}
+
+class DropdownMenu extends React.PureComponent<Props, State> {
+    menu = createRef<HTMLDivElement>();
+
+    state: State = {
+        posX: 0,
+        visible: false,
+    };
+
+    componentWillUnmount() {
+        this.removeListeners();
+    }
+
+    componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>) {
+        const menu = this.menu.current;
+
+        if (this.state.visible && !prevState.visible && menu) {
+            document.addEventListener('click', this.windowListener);
+            document.addEventListener('contextmenu', this.contextMenuListener);
+            menu.style.left = `${Math.round(this.state.posX - menu.clientWidth)}px`;
+        }
+
+        if (!this.state.visible && prevState.visible) {
+            this.removeListeners();
+        }
+    }
+
+    removeListeners = () => {
+        document.removeEventListener('click', this.windowListener);
+        document.removeEventListener('contextmenu', this.contextMenuListener);
+    };
+
+    onClickHandler = (e: React.MouseEvent<any, MouseEvent>) => {
+        e.preventDefault();
+        this.triggerMenu(e.clientX);
+    };
+
+    contextMenuListener = () => this.setState({ visible: false });
+
+    windowListener = (e: MouseEvent) => {
+        const menu = this.menu.current;
+
+        if (e.button === 2 || !this.state.visible || !menu) {
+            return;
+        }
+
+        if (e.target === menu || menu.contains(e.target as Node)) {
+            return;
+        }
+
+        if (e.target !== menu && !menu.contains(e.target as Node)) {
+            this.setState({ visible: false });
+        }
+    };
+
+    triggerMenu = (posX: number) =>
+        this.setState((s) => ({
+            posX: !s.visible ? posX : s.posX,
+            visible: !s.visible,
+        }));
+
+    render() {
+        return (
+            <div>
+                {this.props.renderToggle(this.onClickHandler)}
+                <Fade timeout={150} in={this.state.visible} unmountOnExit>
+                    <div
+                        ref={this.menu}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            this.setState({ visible: false });
+                        }}
+                        style={{
+                            width: '13rem',
+                            background: 'var(--pn-surface)',
+                            border: '1px solid var(--pn-border)',
+                            borderRadius: 'var(--pn-radius)',
+                            boxShadow: 'var(--pn-shadow-2)',
+                            color: 'var(--pn-text-muted)',
+                        }}
+                        css={tw`absolute p-2 z-50`}
+                    >
+                        {this.props.children}
+                    </div>
+                </Fade>
+            </div>
+        );
+    }
+}
+
+export default DropdownMenu;
