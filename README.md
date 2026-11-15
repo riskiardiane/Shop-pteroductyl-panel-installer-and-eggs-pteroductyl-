@@ -132,6 +132,18 @@ Yang disetel otomatis oleh installer:
   (22/SSH, 80/443 panel, atau 8080/2022 wings + range alokasi). Port **3306 tidak dibuka**.
 * Cron berjalan sebagai root tapi hanya `schedule:run`; aplikasi berjalan sebagai `www-data`.
 
+## ⚡ Performa
+
+Yang disetel otomatis oleh installer (reference config `configs/nginx_panel*.conf`):
+
+* **HTTP/2** di port 443 (mengurangi RTT antar resource — penting untuk pengguna jauh dari server).
+* **gzip** untuk semua payload teks (JS/CSS/JSON/SVG) — bundle turun ±70% ukuran transfer.
+* **Cache immutable 1 tahun** untuk asset fingerprinted di `/assets/` (nama file berisi hash konten),
+  7 hari untuk `/themes/`, 1 hari untuk `/favicons/`.
+* `sendfile on`, `tcp_nopush on`.
+* PHP-FPM pool dinamis (`pm.max_children` disetel proporsional dengan vCPU/RAM).
+* Sebaiknya jalankan `php artisan optimize` setelah deploy (config/route/view di-cache).
+
 SSH bisa dimigrasikan ke listener kedua yang diperketat (`RIZZDEVS_SSH_PORT`, default `2222`,
 `MaxAuthTries 4`, `X11Forwarding no`, dsb.) lewat prompt saat install atau
 `CONFIGURE_SSH_HARDENING=true`. Port 22 sengaja **tetap** terbuka saat transisi;

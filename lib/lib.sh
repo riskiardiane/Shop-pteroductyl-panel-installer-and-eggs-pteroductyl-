@@ -207,8 +207,10 @@ EOF
 
 # PHP-FPM: strict sessions, no path info, errors off. SSL cookie flag is handled
 # by SESSION_SECURE_COOKIE in .env (true when a certificate is configured).
+# Also raises the pm.* pool limits proportionally to CPU count (Debian ships
+# pm.max_children=5, which queues requests once a few users are active).
 configure_php_hardening() {
-  output "Hardening PHP-FPM sessions.."
+  output "Hardening PHP-FPM sessions and pool.."
   local conf="/etc/php/8.3/fpm/conf.d/99-rizzdevs.ini"
   if [ -d /etc/php/8.3/fpm/conf.d ]; then
     cat > "$conf" <<'EOF'
@@ -220,9 +222,25 @@ session.use_strict_mode = 1
 session.cookie_httponly = 1
 session.cookie_samesite = Lax
 EOF
-    if systemctl list-unit-files php8.3-fpm.service >/dev/null 2>&1; then
-      systemctl reload php8.3-fpm >>"$LOG_PATH" 2>&1 || systemctl restart php8.3-fpm >>"$LOG_PATH" 2>&1 || true
-    fi
+  fi
+
+  local pool="/etc/php/8.3/fpm/pool.d/www.conf"
+  if [ -f "$pool" ]; then
+    local max_children=$(( $(nproc) * 6 ))
+    [ "$max_children" -gt 24 ] && max_children=24
+    [ "$max_children" -lt 8 ] && max_children=8
+    local start=$(( max_children / 3 ))
+    local max_spare=$(( max_children / 2 ))
+    sed -i -E \
+      -e "s/^pm\.max_children = .*/pm.max_children = ${max_children}/" \
+      -e "s/^pm\.start_servers = .*/pm.start_servers = ${start}/" \
+      -e "s/^pm\.min_spare_servers = .*/pm.min_spare_servers = 2/" \
+      -e "s/^pm\.max_spare_servers = .*/pm.max_spare_servers = ${max_spare}/" \
+      "$pool"
+  fi
+
+  if systemctl list-unit-files php8.3-fpm.service >/dev/null 2>&1; then
+    systemctl reload php8.3-fpm >>"$LOG_PATH" 2>&1 || systemctl restart php8.3-fpm >>"$LOG_PATH" 2>&1 || true
   fi
 }
 

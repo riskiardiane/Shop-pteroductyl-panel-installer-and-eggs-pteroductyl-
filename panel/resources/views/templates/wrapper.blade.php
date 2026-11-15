@@ -19,9 +19,12 @@
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-            <meta name="csrf-token" content="{{ csrf_token() }}">
-            <meta name="robots" content="noindex">
-            <meta name="description" content="{{ $webDescription ?: $webTitle }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="robots" content="noindex">
+        <meta name="description" content="{{ $webDescription ?: $webTitle }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="dns-prefetch" href="https://recaptcha.net">
             @if($webFavicon)
                 <link rel="icon" href="{{ $webFavicon }}">
                 <link rel="shortcut icon" href="{{ $webFavicon }}">
