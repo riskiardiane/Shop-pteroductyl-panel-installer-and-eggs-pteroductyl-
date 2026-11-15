@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-01T11:21:19+02:00",
     "name": "fragbot",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "The fragforce discord bot.\r\n\r\nlocated at https://github.com/fragforce/fragbot",
     "features": null,
     "docker_images": {

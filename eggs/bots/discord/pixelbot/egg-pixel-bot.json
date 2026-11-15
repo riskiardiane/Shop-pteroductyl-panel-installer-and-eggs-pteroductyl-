@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-01T11:25:50+02:00",
     "name": "pixel-bot",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "A Discord bot written in Python using discord.py\r\n\r\nhttps://github.com/Ispira/pixel-bot",
     "features": null,
     "docker_images": {

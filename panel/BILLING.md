@@ -374,3 +374,12 @@ Bisa ditambahkan sebagai command terpisah.
 - Renewal otomatis / auto-charge.
 - Halaman detail invoice + unduh PDF.
 - Laporan pendapatan.
+
+
+---
+
+> **Catatan:** `MUSTIKA_API_KEY`, `MUSTIKA_BASE_URL`, `MUSTIKA_TIMESTAMP_TOLERANCE`,
+> `BILLING_EXPIRY_MINUTES`, `BILLING_GRACE_DAYS`, `BILLING_INVOICE_PREFIX`,
+> `BILLING_SUCCESS_URL` dan `BILLING_CANCEL_URL` juga bisa diatur dari panel:
+> **Admin → Settings → Web → Mustika Payment & Billing**. Nilai yang diisi di sana
+> disimpan terenkripsi di database dan menimpa `.env` tanpa perlu SSH.

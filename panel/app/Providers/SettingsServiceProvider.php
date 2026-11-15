@@ -30,6 +30,25 @@ class SettingsServiceProvider extends ServiceProvider
         'pterodactyl:client_features:allocations:enabled',
         'pterodactyl:client_features:allocations:range_start',
         'pterodactyl:client_features:allocations:range_end',
+        // Web identity (admin -> Settings -> Web)
+        'web:name',
+        'web:title',
+        'web:description',
+        'web:favicon',
+        'web:logo',
+        'web:theme_color',
+        'web:email',
+        'web:discord',
+        'web:footer',
+        // MustikaPayment & billing (admin -> Settings -> Web)
+        'billing:mustika:base_url',
+        'billing:mustika:api_key',
+        'billing:mustika:timestamp_tolerance',
+        'billing:checkout:expiry_minutes',
+        'billing:checkout:success_url',
+        'billing:checkout:cancel_url',
+        'billing:invoice_prefix',
+        'billing:grace_days',
     ];
 
     /**
@@ -52,6 +71,7 @@ class SettingsServiceProvider extends ServiceProvider
      */
     protected static array $encrypted = [
         'mail:mailers:smtp:password',
+        'billing:mustika:api_key',
     ];
 
     /**

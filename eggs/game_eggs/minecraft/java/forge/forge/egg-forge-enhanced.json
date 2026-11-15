@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-12-30T11:04:14-05:00",
     "name": "Forge Enhanced",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Minecraft Forge Server. Minecraft Forge is a modding API (Application Programming Interface), which makes it easier to create mods, and also make sure mods are compatible with each other.",
     "features": [
         "eula",

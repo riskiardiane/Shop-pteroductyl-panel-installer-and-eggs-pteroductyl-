@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T11:01:56+02:00",
     "name": "KissMP Server",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Server for the KISS Multiplayer BeamNG.drive mod",
     "features": null,
     "docker_images": {

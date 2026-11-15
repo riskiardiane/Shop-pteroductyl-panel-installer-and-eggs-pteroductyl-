@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-03-20T08:45:50+01:00",
     "name": "Forgejo",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Forgejo is a community managed lightweight code hosting solution written in Go. It is published under the MIT license, and is a fork of Gitea.",
     "features": null,
     "docker_images": {

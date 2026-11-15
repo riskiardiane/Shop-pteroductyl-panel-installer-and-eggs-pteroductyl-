@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-05T01:20:18+02:00",
     "name": "Stationeers (BepInEx)",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Stationeers Server with very basic BepInEx support",
     "features": [
         "steam_disk_space"

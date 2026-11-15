@@ -6,7 +6,7 @@ set -e
 #                                                                                    #
 # RizzDevs Panel Installer — shared library                                          #
 #                                                                                    #
-# Copyright (C) 2026, RizzDevs <noreply@panel.exions.web.id>                         #
+# Copyright (C) 2026, RizzDevs <animersvercel@gmail.com>                         #
 # Based on 'pterodactyl-installer' (https://github.com/pterodactyl-installer/         #
 # pterodactyl-installer), Copyright (C) 2018 - 2026 Vilhelm Prytz and contributors.   #
 #                                                                                    #

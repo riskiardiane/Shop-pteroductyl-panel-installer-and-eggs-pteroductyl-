@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T14:06:20+02:00",
     "name": "Yarr",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Yarr is a selfhosted feed aggregator",
     "features": null,
     "docker_images": {

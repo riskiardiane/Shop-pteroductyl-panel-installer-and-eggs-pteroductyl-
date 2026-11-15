@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-12-13T14:45:01-05:00",
     "name": "Grafana",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "The open and composable observability and data visualization platform.\r\nVisualize metrics, logs, and traces from multiple sources like Prometheus, Loki, Elasticsearch, InfluxDB, Postgres and many more.",
     "features": null,
     "docker_images": {

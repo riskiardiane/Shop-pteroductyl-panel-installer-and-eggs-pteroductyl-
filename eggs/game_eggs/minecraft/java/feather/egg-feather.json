@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-05-17T23:20:29+01:00",
     "name": "Feather",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "An experimental Minecraft server implementation written in Rust.",
     "features": null,
     "file_denylist": [],

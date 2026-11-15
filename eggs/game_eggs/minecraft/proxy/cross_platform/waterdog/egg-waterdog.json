@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T11:24:09+02:00",
     "name": "Waterdog",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Waterdog is fork of the well-known Waterfall, which is a fork of the well-known BungeeCord, server teleportation suite.",
     "features": [
         "eula",

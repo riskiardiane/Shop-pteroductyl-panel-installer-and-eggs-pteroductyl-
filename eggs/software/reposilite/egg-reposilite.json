@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-02-13T17:26:13+0000",
     "name": "Reposilite",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Lightweight and easy-to-use repository management software dedicated for Maven based artifacts in the JVM ecosystem.",
     "features": null,
     "docker_images": {

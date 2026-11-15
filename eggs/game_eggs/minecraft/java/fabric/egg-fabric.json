@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-05-17T23:20:29+01:00",
     "name": "Fabric",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Fabric is a modular modding toolchain targeting Minecraft 1.14 and above, including snapshots.",
     "features": [
         "eula",

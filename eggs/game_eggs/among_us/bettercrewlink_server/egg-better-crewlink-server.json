@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T13:58:58+02:00",
     "name": "BetterCrewlink Server",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "An egg designed to allow support for Proximity Chat in Among Us using BetterCrewLink Server",
     "features": null,
     "docker_images": {

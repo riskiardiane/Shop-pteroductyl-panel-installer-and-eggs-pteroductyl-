@@ -53,7 +53,10 @@ Menu yang tersedia:
 **Panel:** nginx, PHP 8.3-FPM (+ semua extension panel), MariaDB, Redis,
 Composer, Node.js 22 + Yarn 1, build frontend produksi, database otomatis,
 migrasi, akun admin, cron `schedule:run`, 274 egg (opsional), nginx vhost,
-opsional Let's Encrypt, opsional ufw.
+opsional Let's Encrypt, opsional ufw, dan halaman **Admin → Settings → Web**
+untuk mengatur Nama Web, Title Web, X-icon (favicon) & logo (upload/URL),
+Mustika Payment Key, grace period dan URL billing — semua diterapkan otomatis
+di seluruh panel, landing page dan email.
 
 **Wings:** Docker CE, docker network `pterodactyl_nw` (172.18.0.0/16, gateway
 172.18.0.1), Wings **v1.13.5** di `/usr/local/bin/wings`, konfigurasi
@@ -66,9 +69,8 @@ opsional Let's Encrypt, opsional ufw.
 
 Semua egg di folder `eggs/` di-import otomatis oleh installer (setelah
 migrasi) menjadi nest **Bots, Databases, Generic, Monitoring, Software,
-Storage, Voice Servers** dan **Games** — author semuanya ditulis ulang menjadi
-`RizzDevs`, dan `meta.update_url` di-kosongkan sehingga panel tidak pernah
-menarik update upstream.
+Storage, Voice Servers** dan **Games** — author semuanya `RizzDevs <animersvercel@gmail.com>`,
+dan `meta.update_url` di-kosongkan sehingga panel tidak pernah menarik update upstream.
 
 Import ulang manual di server yang sudah jalan:
 
@@ -146,13 +148,8 @@ password login secara manual setelah memastikan key kamu terpasang.
 
 * Installer (`install.sh`, `installers/`, `lib/`, `configs/`, `scripts/`): **GPL-3.0** — `LICENSE`
 * Panel (`panel/`): **MIT** — lihat `panel/LICENSE.md` (© Pterodactyl Project, dipakai sesuai ketentuan lisensi)
-* Eggs (`eggs/`): masing-masing egg mengikuti definisinya; author ditulis ulang menjadi `RizzDevs`
-
-Berbasis pada [pterodactyl-installer](https://github.com/pterodactyl-installer/pterodactyl-installer)
-(© 2018–2026 Vilhelm Prytz & kontributor, GPL-3.0) dan
-[pelican-eggs](https://github.com/pelican-eggs/eggs) (egg collection).
-**Tidak terasosiasi dengan proyek resmi Pterodactyl, Pelican atau Vilhelm Prytz.**
+* Eggs (`eggs/`): author `RizzDevs <animersvercel@gmail.com>`
 
 ---
 
-© 2026 RizzDevs — noreply@panel.exions.web.id
+© 2026 RizzDevs — animersvercel@gmail.com

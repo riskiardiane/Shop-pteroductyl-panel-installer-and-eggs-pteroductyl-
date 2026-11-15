@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-02-13T17:26:13+0000",
     "name": "Generic Java",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Creates a container that runs java.",
     "features": null,
     "docker_images": {

@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T11:05:24+02:00",
     "name": "Mindustry",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Mindustry is a hybrid tower-defense sandbox factory game. Create elaborate supply chains of conveyor belts to feed ammo into your turrets, produce materials to use for building, and defend your structures from waves of enemies.",
     "features": null,
     "docker_images": {

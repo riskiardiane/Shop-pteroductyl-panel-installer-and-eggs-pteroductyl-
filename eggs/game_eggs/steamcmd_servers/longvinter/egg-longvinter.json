@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-11-13T18:49:35+01:00",
     "name": "Longvinter",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Longvinter is a multiplayer, third-person sandbox game that implements Crafting, Farming, Building, Trading, and PVP.",
     "features": [
         "steam_disk_space"

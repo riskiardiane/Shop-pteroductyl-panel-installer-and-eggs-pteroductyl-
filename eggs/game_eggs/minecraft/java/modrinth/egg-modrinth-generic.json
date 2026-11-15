@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-12-26T09:36:20-05:00",
     "name": "Modrinth Generic",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "A generic egg for a Modrinth modpack.",
     "features": [
         "eula",

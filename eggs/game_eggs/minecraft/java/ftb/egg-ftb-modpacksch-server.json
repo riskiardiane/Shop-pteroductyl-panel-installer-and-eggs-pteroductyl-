@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-10-27T00:29:03+02:00",
     "name": "FTB-modpacks.ch Server",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Since the release of the FTB APP, FTB modpacks are now distributed through modpacks.ch. This egg was developed for support for modpacks that are distributed through this.",
     "features": [
         "eula",

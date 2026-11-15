@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-09-02T23:24:58+00:00",
     "name": "PhantomBot",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "PhantomBot is an actively developed open source interactive Twitch bot with a vibrant community that provides entertainment and moderation for your channel, allowing you to focus on what matters the most to you - your game and your viewers.",
     "features": null,
     "docker_images": {

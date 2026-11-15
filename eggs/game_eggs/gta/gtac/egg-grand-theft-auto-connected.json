@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-01T11:32:04+02:00",
     "name": "Grand Theft Auto Connected",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Grand Theft Auto Connected is a custom scriptable multiplayer modification for multiple Grand Theft Auto games.",
     "features": null,
     "docker_images": {

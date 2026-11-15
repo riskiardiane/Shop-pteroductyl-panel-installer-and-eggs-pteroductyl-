@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-11-18T10:08:36+01:00",
     "name": "Factorio ARM64",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "The vanilla Factorio server.\r\n\r\nhttps://www.factorio.com/",
     "features": null,
     "docker_images": {

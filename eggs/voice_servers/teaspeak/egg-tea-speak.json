@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T11:49:48+02:00",
     "name": "TeaSpeak",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "TeaSpeak is a free to use client and server software for VoIP communication.\r\n\r\nIts the ideal deal software for everyone who is annoyed about limits and restrictions.",
     "features": null,
     "docker_images": {

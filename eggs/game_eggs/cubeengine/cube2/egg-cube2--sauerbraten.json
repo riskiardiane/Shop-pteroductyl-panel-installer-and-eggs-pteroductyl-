@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-07-30T11:20:16+02:00",
     "name": "Cube 2: Sauerbraten",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Cube 2: Sauerbraten is a free multiplayer & singleplayer first person shooter, the successor of the Cube FPS.\r\nMuch like the original Cube, the aim of this game is fun, old school deathmatch gameplay and also to allow map/geometry editing to be done cooperatively in-game.",
     "features": null,
     "docker_images": {

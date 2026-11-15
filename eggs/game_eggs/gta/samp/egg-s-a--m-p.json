@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-10-19T18:53:04+02:00",
     "name": "SA-MP",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "SA-MP is a free Massively Multiplayer Online game mod for the PC version of Rockstar Games Grand Theft Auto: San Andreas (tm).",
     "features": null,
     "docker_images": {

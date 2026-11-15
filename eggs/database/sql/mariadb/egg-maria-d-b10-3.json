@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-12-19T09:54:17+01:00",
     "name": "MariaDB 10.3",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "One of the most popular database servers. Made by the original developers of MySQL. Guaranteed to stay open source.",
     "features": null,
     "docker_images": {

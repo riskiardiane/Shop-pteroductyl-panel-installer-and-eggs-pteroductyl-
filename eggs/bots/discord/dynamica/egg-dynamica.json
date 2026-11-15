@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T14:13:31+02:00",
     "name": "Dynamica",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "An easy-to-use dynamic voice channel bot.",
     "features": null,
     "docker_images": {

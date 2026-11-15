@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T11:46:37+02:00",
     "name": "luvit generic",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "A generic luvit egg This will clone a git repo. It defaults to master if no branch is specified.\r\n\r\nSupports the discordia lua framework.",
     "features": null,
     "docker_images": {

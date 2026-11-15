@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-05-17T20:11:37+02:00",
     "name": "Liteloader Bedrock Dedicated Server",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "LiteLoaderBDS - Epoch-making & Cross-language Bedrock Dedicated Servers Plugin Loader\r\n\r\nLiteLoaderBDS is an unofficial plugin loader that provides basic API support for Bedrock Dedicated Server, with a massive API, lots of packed utility interfaces, a rich event system and powerful basic interface support.",
     "features": null,
     "docker_images": {

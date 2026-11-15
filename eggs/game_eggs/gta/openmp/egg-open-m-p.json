@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-07-01T11:37:31+02:00",
     "name": "OpenMP",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "A multiplayer mod for Grand Theft Auto: San Andreas that is fully backwards compatible with San Andreas Multiplayer.",
     "features": null,
     "docker_images": {

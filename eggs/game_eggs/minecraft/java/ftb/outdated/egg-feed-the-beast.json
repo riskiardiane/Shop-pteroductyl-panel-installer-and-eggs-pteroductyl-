@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-01T11:41:53+02:00",
     "name": "Feed the Beast",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Egg to handle all official FTB Modpacks",
     "features": [
         "eula",

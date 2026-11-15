@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-12-12T15:32:12+01:00",
     "name": "Postgres 14",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "A default Postgres install that is not really editable.",
     "features": null,
     "docker_images": {

@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-09-03T21:07:28+02:00",
     "name": "Icarus-Dedicated",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Icarus is a survival game that with dedicated servers as a public beta",
     "features": [
         "steam_disk_space"

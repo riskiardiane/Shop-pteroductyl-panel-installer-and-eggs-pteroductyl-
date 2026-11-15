@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-03-19T08:36:18+01:00",
     "name": "tshock",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "The t-shock modded terraria server.\r\n\r\nhttps://tshock.co/",
     "features": null,
     "docker_images": {

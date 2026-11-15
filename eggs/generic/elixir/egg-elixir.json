@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-01-08T09:43:11+01:00",
     "name": "Elixir",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Elixir is a functional, concurrent, high-level general-purpose programming language that runs on the BEAM virtual machine, which is also used to implement the Erlang programming language.",
     "features": null,
     "docker_images": {

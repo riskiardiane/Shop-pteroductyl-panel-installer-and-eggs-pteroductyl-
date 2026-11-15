@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-01T11:14:53+02:00",
     "name": "ATLBot",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "ATLbot in ptero\r\n\r\nhttps://github.com/ATLauncher/discord-bot/",
     "features": null,
     "docker_images": {

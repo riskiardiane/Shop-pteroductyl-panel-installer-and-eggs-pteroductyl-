@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-01-05T11:04:39+01:00",
     "name": "Prometheus",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "The Prometheus monitoring system and time series database.",
     "features": null,
     "docker_images": {

@@ -85,10 +85,44 @@
     }
     .user-menu .user-image { border: 2px solid var(--adm-primary) !important; box-shadow: 0 0 0 2px #fff; }
 
-    /* ================= SIDEBAR — floating panel ================= */
+    /* ================= LAYOUT — header non-fixed, sidebar full height ================= */
+    .wrapper {
+        height: auto !important;
+        min-height: 100vh;
+        overflow: visible !important;
+    }
+    .main-header {
+        position: relative !important;
+        max-height: none !important;
+        z-index: 1030 !important;
+    }
+    .main-header .logo {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        height: 50px;
+    }
+    .main-header .logo .logo-image { height: 30px; width: auto; max-width: 110px; object-fit: contain; }
+    .main-header .logo .logo-text { line-height: 1; }
+    .content-wrapper { padding-top: 0 !important; min-height: 100vh !important; }
+    .main-footer { margin-left: 230px; }
+
+    /* ================= SIDEBAR — floating panel, full height ================= */
     .main-sidebar {
+        position: fixed !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        width: 230px;
         background: transparent !important;
-        padding: 12px 0 12px 12px;
+        padding: 12px 0 12px 12px !important;
+        overflow-y: auto;
+        overflow-x: hidden;
+        z-index: 810 !important;
+        scrollbar-width: thin;
     }
     .sidebar {
         padding: 12px 10px !important;
@@ -96,8 +130,13 @@
         border: 1px solid var(--adm-border) !important;
         border-radius: var(--adm-radius-xl) !important;
         box-shadow: var(--adm-shadow), var(--adm-inner-highlight) !important;
-        min-height: calc(100vh - 84px);
+        height: 100% !important;
+        min-height: 100% !important;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
     }
+    .sidebar .sidebar-menu { flex: 1 0 auto; }
     .sidebar-menu > li.header {
         background: transparent !important;
         color: var(--adm-dim) !important;
@@ -390,8 +429,10 @@
     *::-webkit-scrollbar-thumb { background: rgba(98, 80, 245, 0.34); border: 3px solid transparent; background-clip: padding-box; border-radius: 999px; }
 
     @media (max-width: 991px) {
-        .main-sidebar { padding: 0; }
-        .sidebar { min-height: auto; border-radius: 0 !important; border-left: 0 !important; border-right: 0 !important; }
+        .main-sidebar { padding: 0 !important; transform: translate(-230px, 0); height: 100vh !important; }
+        body.sidebar-open .main-sidebar { transform: translate(0, 0) !important; }
+        .sidebar { height: 100vh !important; min-height: 100vh !important; border-radius: 0 !important; border-left: 0 !important; border-right: 0 !important; }
+        .content-wrapper, .main-footer { margin-left: 0 !important; }
     }
     @media (max-width: 767px) {
         .content-header { padding: 16px 16px 4px; }

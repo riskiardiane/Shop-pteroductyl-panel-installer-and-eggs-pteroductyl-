@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-02-16T13:34:36+01:00",
     "name": "Urban Terror",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Urban Terror started as a realism based \"total conversion\" mod for Quake III Arena. Nowadays, Urban Terror is played using the free, stand-alone, ioquake3 engine modified, which doesn't require Quake III Arena, in addition to being an add-on to id Software's Quake III Arena.",
     "features": null,
     "docker_images": {

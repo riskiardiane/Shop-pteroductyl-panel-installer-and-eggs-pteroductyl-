@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-01-13T21:17:09+01:00",
     "name": "ClassiCube(MGC)",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Debian based MCGalaxy Egg.",
     "features": null,
     "docker_images": {

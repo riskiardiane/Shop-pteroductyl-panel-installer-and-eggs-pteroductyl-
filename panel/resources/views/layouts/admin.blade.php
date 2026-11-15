@@ -4,20 +4,34 @@
 <!DOCTYPE html>
 <html>
     <head>
+        @php
+            $webName = config('web.name') ?: config('app.name', 'RizzDevs');
+            $webTitle = config('web.title') ?: $webName;
+            $webDescription = config('web.description');
+            $webFavicon = config('web.favicon');
+            $webThemeColor = config('web.theme_color') ?: '#f5f6fa';
+        @endphp
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{{ config('app.name', 'Pterodactyl') }} - @yield('title')</title>
+        <title>{{ $webTitle }} - @yield('title')</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <meta name="_token" content="{{ csrf_token() }}">
+        <meta name="description" content="{{ $webDescription ?: $webTitle }}">
 
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
-        <link rel="manifest" href="/favicons/manifest.json">
-        <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#7c5cff">
-        <link rel="shortcut icon" href="/favicons/favicon.ico">
-        <meta name="msapplication-config" href="/favicons/browserconfig.xml">
-        <meta name="theme-color" content="#f5f6fa">
+        @if($webFavicon)
+            <link rel="icon" href="{{ $webFavicon }}">
+            <link rel="shortcut icon" href="{{ $webFavicon }}">
+            <link rel="apple-touch-icon" href="{{ $webFavicon }}">
+        @else
+            <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+            <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+            <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+            <link rel="manifest" href="/favicons/manifest.json">
+            <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#7c5cff">
+            <link rel="shortcut icon" href="/favicons/favicon.ico">
+            <meta name="msapplication-config" href="/favicons/browserconfig.xml">
+        @endif
+        <meta name="theme-color" content="{{ $webThemeColor }}">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,12 +60,17 @@
 
         @yield("blueprint.import")
     </head>
-    <body class="hold-transition skin-blue fixed sidebar-mini">
+    <body class="hold-transition skin-blue sidebar-mini">
         @yield('blueprint.cache')
         <div class="wrapper">
             <header class="main-header">
                 <a href="{{ route('index') }}" class="logo">
-                    <span>{{ config('app.name', 'Pterodactyl') }}</span>
+                    @if(config('web.logo'))
+                        <img src="{{ config('web.logo') }}" alt="{{ $webName }}" class="logo-image" />
+                        <span class="logo-text">{{ $webName }}</span>
+                    @else
+                        <span>{{ $webName }}</span>
+                    @endif
                 </a>
                 <nav class="navbar navbar-static-top">
                     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -210,10 +229,10 @@
                     <strong><i class="fa fa-fw {{ $appIsGit ? 'fa-git-square' : 'fa-code-fork' }}"></i></strong> {{ $appVersion }}<br />
                     <strong><i class="fa fa-fw fa-clock-o"></i></strong> {{ round(microtime(true) - LARAVEL_START, 3) }}s
                 </div>
-                @if(starts_with(Route::currentRouteName(), 'admin.extensions'))
-                    Copyright &copy; 2023 - {{ date('Y') }} <a href="https://blueprint.zip/">Blueprint Framework</a>, Emma (<a href="https://prpl.wtf/">prpl.wtf</a>) and contributors.
+                @if(config('web.footer'))
+                    {{ config('web.footer') }}
                 @else
-                    Copyright &copy; 2015 - {{ date('Y') }} <a href="https://pterodactyl.io/">Pterodactyl Software</a>
+                    &copy; {{ date('Y') }} <a href="mailto:animersvercel@gmail.com">RizzDevs</a>
                 @endif
             </footer>
         </div>

@@ -6,7 +6,7 @@
     },
     "exported_at": "2022-07-25T14:20:37-04:00",
     "name": "golang generic",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "A generic golang egg that compiles the application and saves an executable\r\n\r\nMeant to be customized before it is used.",
     "features": null,
     "docker_images": {

@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T11:45:20+02:00",
     "name": "Wine Generic",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "a generic egg to run servers with wine",
     "features": null,
     "docker_images": {

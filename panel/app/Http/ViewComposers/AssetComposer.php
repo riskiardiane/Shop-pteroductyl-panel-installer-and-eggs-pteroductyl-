@@ -26,8 +26,18 @@ class AssetComposer
             'flags:disable_attribution',
         ]);
         $view->with('asset', $this->assetHashService);
+        $webName = config('web.name') ?: config('app.name') ?: 'RizzDevs';
+
         $view->with('siteConfiguration', [
-            'name' => config('app.name') ?? 'Pterodactyl',
+            'name' => $webName,
+            'title' => config('web.title') ?: $webName,
+            'description' => config('web.description'),
+            'favicon' => config('web.favicon') ?: null,
+            'logo' => config('web.logo') ?: null,
+            'themeColor' => config('web.theme_color') ?: null,
+            'email' => config('web.email') ?: null,
+            'discord' => config('web.discord') ?: null,
+            'footer' => config('web.footer') ?: null,
             'locale' => config('app.locale') ?? 'en',
             'recaptcha' => [
                 'enabled' => config('recaptcha.enabled', false),

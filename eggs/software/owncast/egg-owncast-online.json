@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T11:49:15+02:00",
     "name": "owncast.online",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Owncast is a self-hosted live video and web chat server for use with existing popular broadcasting software.",
     "features": null,
     "docker_images": {

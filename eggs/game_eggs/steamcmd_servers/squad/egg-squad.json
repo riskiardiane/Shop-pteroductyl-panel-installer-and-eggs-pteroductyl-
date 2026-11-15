@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-03-06T13:01:46+02:00",
     "name": "Squad",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Squad is a 50 vs 50 multiplayer first-person shooter that aims to capture combat realism through communication and teamplay. Major features include vehicle-based combined arms gameplay, large scale environments, base building, and integrated positional VoIP for proximity talking & radio.",
     "features": [
         "steam_disk_space"

@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T14:04:19+02:00",
     "name": "Bastion",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Bastion is a multi-purpose Discord Bot that can help you automate most tasks in your server, from administration and moderation to keeping the members active through various incentives, games and other fun activities",
     "features": null,
     "docker_images": {

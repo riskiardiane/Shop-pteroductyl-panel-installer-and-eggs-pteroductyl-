@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-08-04T08:40:49+02:00",
     "name": "Lavalink",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "A standalone audio sending node based on Lavaplayer and Koe. Allows for sending audio without it ever reaching any of your shards.\r\nDescription taken from https://github.com/freyacodes/Lavalink",
     "features": null,
     "docker_images": {

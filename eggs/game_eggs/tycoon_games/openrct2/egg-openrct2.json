@@ -5,7 +5,7 @@
         "update_url": null
     },
     "name": "OpenRCT2",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "OpenRCT2 is an open-source re-implementation of RollerCoaster Tycoon 2 (RCT2), expanding the game with new features, fixing bugs and raising game limits.",
     "features": null,
     "docker_images": {

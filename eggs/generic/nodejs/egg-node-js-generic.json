@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T14:19:30+02:00",
     "name": "node.js generic",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "a generic node.js egg\r\n\r\nThis will clone a git repo. it defaults to master if no branch is specified.\r\n\r\nInstalls the node_modules on install. If you set user_upload then I assume you know what you are doing.",
     "features": null,
     "docker_images": {

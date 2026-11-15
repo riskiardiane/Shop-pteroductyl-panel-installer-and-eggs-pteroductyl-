@@ -6,7 +6,7 @@
     },
     "exported_at": "2022-07-08T15:50:16+02:00",
     "name": "Loki",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Prometheus but for logs. This egg is for Loki instance only! You usually need pushing agents like Promtail to put logs in this",
     "features": null,
     "docker_images": {

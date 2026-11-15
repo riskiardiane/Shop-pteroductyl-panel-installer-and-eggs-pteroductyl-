@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-02-24T16:18:35+01:00",
     "name": "Gitea",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Gitea is a community managed lightweight code hosting solution written in Go. It is published under the MIT license.",
     "features": null,
     "docker_images": {

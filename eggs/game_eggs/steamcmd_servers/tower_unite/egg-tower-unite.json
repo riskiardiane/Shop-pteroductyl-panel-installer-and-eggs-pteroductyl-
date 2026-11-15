@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T11:43:32+02:00",
     "name": "Tower Unite",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Tower Unite\r\n\r\nDefault Port: 7778\r\nDefault Query Port: 27016\r\n\r\nConfig Path: Tower/Saved/Config/TowerServer.ini",
     "features": [
         "steam_disk_space"

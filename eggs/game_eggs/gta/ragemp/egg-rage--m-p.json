@@ -6,7 +6,7 @@
     },
     "exported_at": "2022-12-11T17:31:26+01:00",
     "name": "Rage.MP",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "https://rage.mp/\r\n\r\nModified to work with the latest version of RAGE:MP\r\nWill automatically install linux bridge.\r\n**This server requires 2 ports to be added for the server. the main port and the next (port+1) as ports for the server.",
     "features": null,
     "docker_images": {

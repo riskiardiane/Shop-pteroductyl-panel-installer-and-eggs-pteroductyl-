@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T11:03:08+02:00",
     "name": "Factorio",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "The vanilla Factorio server.\r\n\r\nhttps://www.factorio.com/",
     "features": null,
     "docker_images": {

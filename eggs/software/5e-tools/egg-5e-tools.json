@@ -6,7 +6,7 @@
     },
     "exported_at": "2022-11-27T17:50:04+01:00",
     "name": "5e Tools",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "A suite of tools for 5th Edition Dungeons & Dragons players and Dungeon Masters.",
     "features": null,
     "docker_images": {

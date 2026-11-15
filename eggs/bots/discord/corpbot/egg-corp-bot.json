@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-01T11:18:44+02:00",
     "name": "CorpBot",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "A very clumsy python bot for discord \r\n\r\nhttps://github.com/corpnewt/CorpBot.py",
     "features": null,
     "docker_images": {

@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-11-25T16:40:11+01:00",
     "name": "Quilt",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "The Quilt project is an open-source, community-driven modding toolchain designed primarily for Minecraft. By focusing on speed, ease of use and modularity, Quilt aims to provide a sleek and modern modding toolchain with an open ecosystem.",
     "features": null,
     "docker_images": {

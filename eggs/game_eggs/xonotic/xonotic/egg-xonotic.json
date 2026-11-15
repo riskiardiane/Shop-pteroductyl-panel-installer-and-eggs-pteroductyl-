@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-01-13T21:03:27+01:00",
     "name": "Xonotic",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "This is for the default xonotic setup.",
     "features": null,
     "docker_images": {

@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-12-16T14:03:42+01:00",
     "name": "Rathole",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "A lightweight and high-performance reverse proxy for NAT traversal, written in Rust. An alternative to frp and ngrok.",
     "features": null,
     "docker_images": {

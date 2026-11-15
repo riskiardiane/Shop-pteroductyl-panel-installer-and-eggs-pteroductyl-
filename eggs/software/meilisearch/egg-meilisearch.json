@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-09-12T11:04:11+02:00",
     "name": "Meilisearch",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "A lightning-fast search engine that fits effortlessly into your apps, websites, and workflow.",
     "features": null,
     "docker_images": {

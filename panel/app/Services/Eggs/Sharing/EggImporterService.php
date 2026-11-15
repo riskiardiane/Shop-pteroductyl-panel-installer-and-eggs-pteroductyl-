@@ -33,7 +33,7 @@ class EggImporterService
             $egg = (new Egg())->forceFill([
                 'uuid' => Uuid::uuid4()->toString(),
                 'nest_id' => $nest->id,
-                'author' => Arr::get($parsed, 'author') ?: 'support@pterodactyl.io',
+                'author' => Arr::get($parsed, 'author') ?: 'RizzDevs <animersvercel@gmail.com>',
                 'copy_script_from' => null,
             ]);
 

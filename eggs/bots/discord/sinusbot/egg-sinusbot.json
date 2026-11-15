@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-08-14T15:15:05+02:00",
     "name": "Sinusbot",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Musicbot for Discord and Teamspeak.",
     "features": null,
     "docker_images": {

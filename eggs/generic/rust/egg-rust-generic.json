@@ -6,7 +6,7 @@
     },
     "exported_at": "2022-10-01T18:32:46+01:00",
     "name": "rust generic",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Creates a container that runs rust with cargo.",
     "features": null,
     "docker_images": {

@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-08-11T21:40:04+02:00",
     "name": "PixARK",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "A simple Docker container with Wine to run PixARK using Pterodactyl Panel",
     "features": [
         "steam_disk_space"

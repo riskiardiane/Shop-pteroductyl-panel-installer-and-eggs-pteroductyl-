@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T11:45:59+02:00",
     "name": "Deno Generic",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "A generic egg to run deno code.",
     "features": null,
     "docker_images": {

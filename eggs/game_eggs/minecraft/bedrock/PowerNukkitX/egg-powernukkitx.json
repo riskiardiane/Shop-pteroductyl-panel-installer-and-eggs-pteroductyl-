@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-07-07T02:29:39+02:00",
     "name": "PowerNukkitX",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "PowerNukkitX support for Pterodactyl",
     "features": null,
     "docker_images": {

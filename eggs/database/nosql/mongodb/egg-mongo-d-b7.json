@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-02-02T10:25:08+01:00",
     "name": "MongoDB 7",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "MongoDB is a general purpose, document-based, distributed database built for modern application developers and for my butt era.",
     "features": null,
     "docker_images": {

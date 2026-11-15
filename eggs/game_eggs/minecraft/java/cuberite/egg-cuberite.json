@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T11:11:13+02:00",
     "name": "Cuberite",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "A lightweight, fast and extensible game server for Minecraft",
     "features": [
         "eula",

@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React, { lazy, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Route, Router, Switch } from 'react-router-dom';
 import { StoreProvider } from 'easy-peasy';
@@ -25,101 +25,124 @@ const ServerRouter = lazy(() => import(/* webpackChunkName: "server" */ '@/route
 const AuthenticationRouter = lazy(() => import(/* webpackChunkName: "auth" */ '@/routers/AuthenticationRouter'));
 
 interface ExtendedWindow extends Window {
-    SiteConfiguration?: SiteSettings;
-    PterodactylUser?: {
-        uuid: string;
-        username: string;
-        email: string;
-        /* eslint-disable camelcase */
-        root_admin: boolean;
-        use_totp: boolean;
-        language: string;
-        updated_at: string;
-        created_at: string;
-        /* eslint-enable camelcase */
-    };
+  SiteConfiguration?: SiteSettings;
+  PterodactylUser?: {
+    uuid: string;
+    username: string;
+    email: string;
+    /* eslint-disable camelcase */
+    root_admin: boolean;
+    use_totp: boolean;
+    language: string;
+    updated_at: string;
+    created_at: string;
+    /* eslint-enable camelcase */
+  };
 }
 
 setupInterceptors(history);
 
 const App = () => {
-    const { PterodactylUser, SiteConfiguration } = window as ExtendedWindow;
-    if (PterodactylUser && !store.getState().user.data) {
-        store.getActions().user.setUserData({
-            uuid: PterodactylUser.uuid,
-            username: PterodactylUser.username,
-            email: PterodactylUser.email,
-            language: PterodactylUser.language,
-            rootAdmin: PterodactylUser.root_admin,
-            useTotp: PterodactylUser.use_totp,
-            createdAt: new Date(PterodactylUser.created_at),
-            updatedAt: new Date(PterodactylUser.updated_at),
-        });
+  const { PterodactylUser, SiteConfiguration } = window as ExtendedWindow;
+
+  useEffect(() => {
+    const configuration = SiteConfiguration;
+    if (!configuration) {
+      return;
     }
 
-    if (!store.getState().settings.data) {
-        store.getActions().settings.setSettings(SiteConfiguration!);
+    document.title = configuration.title || configuration.name;
+
+    if (configuration.themeColor) {
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', configuration.themeColor);
     }
 
-    return (
-        <>
-            <GlobalStylesheet />
-            <StoreProvider store={store}>
-                <ProgressBar />
-                <div css={tw`mx-auto w-auto`}>
-                    <Router history={history}>
-                        <Switch>
-                            <Route path={'/auth'}>
-                                <Spinner.Suspense>
-                                    <AuthenticationRouter />
-                                </Spinner.Suspense>
-                            </Route>
-                            <Route path={'/'} exact>
-                                <Spinner.Suspense>
-                                    <LandingPage />
-                                </Spinner.Suspense>
-                            </Route>
-                            <Route path={'/pricing'}>
-                                <Spinner.Suspense>
-                                    <PricingPage />
-                                </Spinner.Suspense>
-                            </Route>
-                            <Route path={'/checkout'}>
-                                <Spinner.Suspense>
-                                    <CheckoutPage />
-                                </Spinner.Suspense>
-                            </Route>
-                            <Route path={'/success'}>
-                                <Spinner.Suspense>
-                                    <SuccessPage />
-                                </Spinner.Suspense>
-                            </Route>
-                            <AuthenticatedRoute path={'/dashboard'}>
-                                <Spinner.Suspense>
-                                    <DashboardRouter />
-                                </Spinner.Suspense>
-                            </AuthenticatedRoute>
-                            <AuthenticatedRoute path={'/account'}>
-                                <Spinner.Suspense>
-                                    <DashboardRouter />
-                                </Spinner.Suspense>
-                            </AuthenticatedRoute>
-                            <AuthenticatedRoute path={'/server/:id'}>
-                                <Spinner.Suspense>
-                                    <ServerContext.Provider>
-                                        <ServerRouter />
-                                    </ServerContext.Provider>
-                                </Spinner.Suspense>
-                            </AuthenticatedRoute>
-                            <Route path={'*'}>
-                                <NotFound />
-                            </Route>
-                        </Switch>
-                    </Router>
-                </div>
-            </StoreProvider>
-        </>
-    );
+    if (configuration.favicon) {
+      document.querySelectorAll('link[rel~="icon"]').forEach((el) => el.parentElement?.removeChild(el));
+      const link = document.createElement('link');
+      link.rel = 'icon';
+      link.href = configuration.favicon;
+      document.head.appendChild(link);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (PterodactylUser && !store.getState().user.data) {
+    store.getActions().user.setUserData({
+      uuid: PterodactylUser.uuid,
+      username: PterodactylUser.username,
+      email: PterodactylUser.email,
+      language: PterodactylUser.language,
+      rootAdmin: PterodactylUser.root_admin,
+      useTotp: PterodactylUser.use_totp,
+      createdAt: new Date(PterodactylUser.created_at),
+      updatedAt: new Date(PterodactylUser.updated_at),
+    });
+  }
+
+  if (!store.getState().settings.data) {
+    store.getActions().settings.setSettings(SiteConfiguration!);
+  }
+
+  return (
+    <>
+      <GlobalStylesheet />
+      <StoreProvider store={store}>
+        <ProgressBar />
+        <div css={tw`mx-auto w-auto`}>
+          <Router history={history}>
+            <Switch>
+              <Route path={'/auth'}>
+                <Spinner.Suspense>
+                  <AuthenticationRouter />
+                </Spinner.Suspense>
+              </Route>
+              <Route path={'/'} exact>
+                <Spinner.Suspense>
+                  <LandingPage />
+                </Spinner.Suspense>
+              </Route>
+              <Route path={'/pricing'}>
+                <Spinner.Suspense>
+                  <PricingPage />
+                </Spinner.Suspense>
+              </Route>
+              <Route path={'/checkout'}>
+                <Spinner.Suspense>
+                  <CheckoutPage />
+                </Spinner.Suspense>
+              </Route>
+              <Route path={'/success'}>
+                <Spinner.Suspense>
+                  <SuccessPage />
+                </Spinner.Suspense>
+              </Route>
+              <AuthenticatedRoute path={'/dashboard'}>
+                <Spinner.Suspense>
+                  <DashboardRouter />
+                </Spinner.Suspense>
+              </AuthenticatedRoute>
+              <AuthenticatedRoute path={'/account'}>
+                <Spinner.Suspense>
+                  <DashboardRouter />
+                </Spinner.Suspense>
+              </AuthenticatedRoute>
+              <AuthenticatedRoute path={'/server/:id'}>
+                <Spinner.Suspense>
+                  <ServerContext.Provider>
+                    <ServerRouter />
+                  </ServerContext.Provider>
+                </Spinner.Suspense>
+              </AuthenticatedRoute>
+              <Route path={'*'}>
+                <NotFound />
+              </Route>
+            </Switch>
+          </Router>
+        </div>
+      </StoreProvider>
+    </>
+  );
 };
 
 export default hot(App);

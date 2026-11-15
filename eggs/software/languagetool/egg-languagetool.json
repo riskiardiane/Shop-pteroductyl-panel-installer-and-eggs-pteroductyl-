@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-10-07T07:47:03+02:00",
     "name": "LanguageTool",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "This egg installs a LanguageTool server\r\n\r\nLanguageTool is an Open Source proofreading software for English, French, German, Polish, Russian, and more than 20 other languages. It finds many errors that a simple spell checker cannot find.\r\n\r\nView https://languagetool.org for more information.",
     "features": null,
     "docker_images": {

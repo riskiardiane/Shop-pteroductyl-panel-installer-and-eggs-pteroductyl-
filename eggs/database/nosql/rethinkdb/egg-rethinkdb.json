@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T14:35:12+02:00",
     "name": "rethinkdb",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "The open-source database for the realtime web",
     "features": null,
     "docker_images": {

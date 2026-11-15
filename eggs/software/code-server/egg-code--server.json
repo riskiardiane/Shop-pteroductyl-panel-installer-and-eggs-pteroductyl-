@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-02-04T23:01:25+01:00",
     "name": "Code-Server",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Run VS Code on any machine anywhere and access it in the browser.",
     "features": null,
     "docker_images": {

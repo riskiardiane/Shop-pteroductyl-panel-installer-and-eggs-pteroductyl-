@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-03-24T14:29:09+01:00",
     "name": "Generic C#",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "A generic C# (dotnet) egg that runs your C# project.",
     "features": null,
     "docker_images": {

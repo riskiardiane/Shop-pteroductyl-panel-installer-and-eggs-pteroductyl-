@@ -6,7 +6,7 @@ set -e -o pipefail
 #                                                                                    #
 # RizzDevs Panel Installer — installs Wings (game node daemon) for AURORA 2.0.       #
 #                                                                                    #
-# Copyright (C) 2026, RizzDevs <noreply@panel.exions.web.id>                         #
+# Copyright (C) 2026, RizzDevs <animersvercel@gmail.com>                         #
 # Based on 'pterodactyl-installer' (https://github.com/pterodactyl-installer/         #
 # pterodactyl-installer), Copyright (C) 2018 - 2026 Vilhelm Prytz and contributors.   #
 #                                                                                    #

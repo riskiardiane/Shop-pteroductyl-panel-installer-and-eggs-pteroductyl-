@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T14:26:29+02:00",
     "name": "Crewlink server",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "An egg designed to allow support for Proximity Chat in Among Us using CrewLink Server",
     "features": null,
     "docker_images": {

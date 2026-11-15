@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-05-21T09:59:37-07:00",
     "name": "Subnautica",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Subnautica is an open world survival action-adventure video game developed and published by Unknown Worlds Entertainment. In it, players are free to explore the ocean on an alien planet, known as planet 4546B, after their spaceship, the Aurora, crashes on the planet's surface.\r\n\r\nNote: NitroxMod version >=1.7.0.0 is required",
     "features": [
         "steam_disk_space"

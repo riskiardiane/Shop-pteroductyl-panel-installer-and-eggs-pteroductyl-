@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T11:25:36+02:00",
     "name": "Travertine",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Travertine is a fork of Waterfall with 1.7 protocol support. Waterfall is a fork of the well-known BungeeCord server teleportation suite.",
     "features": [
         "eula",

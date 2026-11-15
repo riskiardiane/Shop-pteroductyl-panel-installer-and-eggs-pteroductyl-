@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-01-09T14:18:18+01:00",
     "name": "SCP:SL - Exiled",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Egg for SCP: Secret Laboratory Dedicated Linux Server with Exiled Plugin Framework",
     "features": [
         "steam_disk_space"

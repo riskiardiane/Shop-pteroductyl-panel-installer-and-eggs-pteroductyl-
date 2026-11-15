@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-03-17T19:22:21+01:00",
     "name": "RabbitMQ",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "RabbitMQ is a feature rich, multi-protocol messaging broker.",
     "features": null,
     "docker_images": {

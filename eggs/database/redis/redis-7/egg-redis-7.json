@@ -6,7 +6,7 @@
     },
     "exported_at": "2022-10-02T16:30:14+01:00",
     "name": "Redis-7",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes with radius queries and streams.",
     "features": null,
     "docker_images": {

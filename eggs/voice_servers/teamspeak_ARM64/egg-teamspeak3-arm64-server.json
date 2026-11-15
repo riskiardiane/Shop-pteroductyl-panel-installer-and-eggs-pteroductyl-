@@ -6,7 +6,7 @@
     },
     "exported_at": "2022-07-06T17:10:16+02:00",
     "name": "Teamspeak3 Server ARM64",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "VoIP software designed with security in mind, featuring crystal clear voice quality, endless customization options, and scalabilty up to thousands of simultaneous users.",
     "features": null,
     "docker_images": {

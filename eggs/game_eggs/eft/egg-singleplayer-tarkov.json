@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-02-21T09:23:22-05:00",
     "name": "Singleplayer Tarkov",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "The Stay in Tarkov project was born due to Battlestate Games' (BSG) reluctance to create the pure PvE version of Escape from Tarkov. The project's aim is simple, create a Cooperation PvE experience that retains progression.",
     "features": null,
     "docker_images": {

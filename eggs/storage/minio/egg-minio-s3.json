@@ -6,7 +6,7 @@
     },
     "exported_at": "2022-10-07T04:56:20-04:00",
     "name": "Minio S3",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "MinIO is a cloud storage server compatible with Amazon S3, released under Apache License v2. As an object store, MinIO can store unstructured data such as photos, videos, log files, backups and container images. The maximum size of an object is 5TB.",
     "features": null,
     "docker_images": {

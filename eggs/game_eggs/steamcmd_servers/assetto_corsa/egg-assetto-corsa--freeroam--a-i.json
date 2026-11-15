@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-12-27T17:12:44+01:00",
     "name": "Assetto Corsa (Freeroam + AI)",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "Custom Assetto Corsa server with focus on freeroam",
     "features": null,
     "docker_images": {

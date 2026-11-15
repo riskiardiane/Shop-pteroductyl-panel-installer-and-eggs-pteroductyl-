@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-04-02T11:04:03+02:00",
     "name": "Factorio-ModUpdate",
-    "author": "RizzDevs",
+    "author": "RizzDevs <animersvercel@gmail.com>",
     "description": "The vanilla Factorio server. With automatic Mod Updates after ReInstall.\r\n\r\nhttps://www.factorio.com/",
     "features": null,
     "docker_images": {

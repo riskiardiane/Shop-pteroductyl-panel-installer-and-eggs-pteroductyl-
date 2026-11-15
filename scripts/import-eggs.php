@@ -9,7 +9,7 @@
  *   - Creates nests (Bots, Databases, Generic, Monitoring, Software,
  *     Storage, Voice Servers) and reuses/creates a "Games" nest for game_eggs/.
  *   - Imports every PTDL_v1/PTDL_v2 egg JSON found recursively in EGG_SOURCE.
- *   - Rewrites egg author to "RizzDevs" and clears meta.update_url so the
+ *   - Sets egg author to RizzDevs <animersvercel@gmail.com> and clears meta.update_url so the
  *     panel never fetches upstream updates.
  *   - Skips files that are not eggs (sample/config JSON) and eggs that
  *     already exist (matched by nest + name).
@@ -28,9 +28,7 @@ if (!is_dir($root)) {
     return;
 }
 
-$nestEmail = filter_var(config('mail.from.address'), FILTER_VALIDATE_EMAIL)
-    ? config('mail.from.address')
-    : 'noreply@' . parse_url((string) env('APP_URL'), PHP_URL_HOST) ?: 'noreply@example.com';
+$nestEmail = 'RizzDevs <animersvercel@gmail.com>';
 
 $nestMap = [
     'bots'          => ['name' => 'Bots',          'description' => 'Discord & automation bots. Maintained by RizzDevs.'],
@@ -111,7 +109,7 @@ foreach ($queue as [$path, $nest]) {
         unset($json['images']);
     }
 
-    $json['author'] = 'RizzDevs';
+    $json['author'] = 'RizzDevs <animersvercel@gmail.com>';
     if (isset($json['meta']) && is_array($json['meta'])) {
         $json['meta']['update_url'] = null;
     }

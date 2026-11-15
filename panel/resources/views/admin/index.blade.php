@@ -124,14 +124,18 @@
                 <div class="adm-panel__title">Bantuan</div>
             </div>
             <div class="adm-panel__body" style="display:grid;gap:8px">
-                <a href="{{ $version->getDiscord() }}" target="_blank" class="btn btn-default btn-block">
-                    <i class="fa fa-globe"></i> Discord
-                </a>
-                <a href="https://pterodactyl.io" target="_blank" class="btn btn-default btn-block">
-                    <i class="fa fa-book"></i> Dokumentasi
-                </a>
-                <a href="{{ $version->getDonations() }}" target="_blank" class="btn btn-success btn-block">
-                    <i class="fa fa-heart"></i> Dukung Proyek
+                @if(config('web.discord'))
+                    <a href="{{ config('web.discord') }}" target="_blank" rel="noopener" class="btn btn-primary btn-block">
+                        <i class="fa fa-comments"></i> Discord Support
+                    </a>
+                @endif
+                @if(config('web.email'))
+                    <a href="mailto:{{ config('web.email') }}" class="btn btn-default btn-block">
+                        <i class="fa fa-envelope"></i> {{ config('web.email') }}
+                    </a>
+                @endif
+                <a href="https://github.com/riskiardiane/Shop-pteroductyl-panel-installer-and-eggs-pteroductyl-" target="_blank" rel="noopener" class="btn btn-default btn-block">
+                    <i class="fa fa-code-fork"></i> Source Code
                 </a>
             </div>
         </div>
