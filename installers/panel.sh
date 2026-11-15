@@ -155,7 +155,7 @@ panel_dl() {
   fi
 
   # storage/ layout that Laravel expects (the repo ships .gitkeep placeholders)
-  mkdir -p "$PANEL_DIR/storage/"{app,framework/{cache,data,sessions,views,testing},logs}
+  mkdir -p "$PANEL_DIR/storage/"{app/public,framework/{cache,data,sessions,views,testing},logs}
   mkdir -p "$PANEL_DIR/bootstrap/cache"
   chmod -R 755 "$PANEL_DIR/storage" "$PANEL_DIR/bootstrap/cache"
 
