@@ -118,7 +118,7 @@
         min-height: 100vh !important;
         width: 230px;
         background: transparent !important;
-        padding: 12px 0 12px 12px !important;
+        padding: 62px 0 12px 12px !important;
         overflow-y: auto;
         overflow-x: hidden;
         z-index: 810 !important;
