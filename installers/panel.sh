@@ -55,6 +55,9 @@ export CONFIGURE_LETSENCRYPT="${CONFIGURE_LETSENCRYPT:-false}"
 export IMPORT_EGGS="${IMPORT_EGGS:-true}"
 # Firewall
 export CONFIGURE_FIREWALL="${CONFIGURE_FIREWALL:-false}"
+# Optional second SSH listener on a hardened port (port 22 stays open during transition)
+export CONFIGURE_SSH_HARDENING="${CONFIGURE_SSH_HARDENING:-false}"
+export RIZZDEVS_SSH_PORT="${RIZZDEVS_SSH_PORT:-2222}"
 
 PANEL_DIR="${PANEL_DIR:-/var/www/pterodactyl}"
 
@@ -116,6 +119,10 @@ dep_install() {
   systemctl enable mariadb >>"$LOG_PATH" 2>&1
   systemctl start mariadb >>"$LOG_PATH" 2>&1
   systemctl enable nginx >>"$LOG_PATH" 2>&1
+
+  configure_mariadb_hardening
+  configure_php_hardening
+  install_fail2ban
 
   success "Dependencies installed!"
 }
@@ -373,6 +380,12 @@ ask_questions() {
     is_yes "$fw_input" && CONFIGURE_FIREWALL=true
   fi
 
+  if [ "$CONFIGURE_SSH_HARDENING" != "true" ]; then
+    echo -n "* Harden SSH (add a hardened listener on port ${RIZZDEVS_SSH_PORT}, keep port 22 open)? (y/N): "
+    read -r ssh_input
+    is_yes "$ssh_input" && CONFIGURE_SSH_HARDENING=true
+  fi
+
   if [ "$IMPORT_EGGS" != "false" ]; then
     echo -n "* Import the bundled RizzDevs egg collection (274 eggs) after install? (Y/n): "
     read -r egg_input
@@ -424,6 +437,7 @@ perform_install() {
 
   output "Starting AURORA 2.0 Panel installation.. this might take a while!"
   dep_install
+  [ "$CONFIGURE_SSH_HARDENING" == true ] && configure_ssh_hardening
   panel_dl
   install_composer_deps
   create_db_user "$MYSQL_USER" "$MYSQL_PASSWORD" "$MYSQL_DB"

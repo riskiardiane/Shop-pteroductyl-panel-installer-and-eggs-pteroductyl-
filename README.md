@@ -112,16 +112,33 @@ Panduan lengkap: lihat `panel/BILLING.md`.
 
 ## 🔒 Keamanan
 
+Yang disetel otomatis oleh installer:
+
 * `APP_DEBUG=false` dan `APP_ENV=production` disetel otomatis.
+* MariaDB hanya listen di `127.0.0.1` (bukan `0.0.0.0`) dan `local-infile=0`.
+* Database panel dibuat dengan grant **hanya** pada database panel itu sendiri
+  (tanpa `GRANT OPTION`) — tidak ada grant global.
+* fail2ban dipasang otomatis dengan jail `sshd` (bantime 1 jam, maks. 5 percobaan).
+* PHP-FPM: `expose_php=Off`, `display_errors=Off`, `cgi.fix_pathinfo=0`,
+  `session.use_strict_mode=1`, `session.cookie_httponly=1`, `session.cookie_samesite=Lax`.
+* nginx: `server_tokens off`, header `X-Frame-Options`, `X-Content-Type-Options`,
+  `X-XSS-Protection 0`, `Referrer-Policy`, `Permissions-Policy`, `Strict-Transport-Security`,
+  dan rule `deny all` untuk `.env` / `.git` / `composer.json` / `package.json` /
+  `storage/logs` / `vendor` / `node_modules` / file internal lainnya.
 * `config.yml` Wings ditulis dengan permission `0600`.
-* Opsi firewall ufw men-deny semua incoming lalu membuka hanya port yang perlu.
-* Header keamanan nginx (nosniff, SAMEORIGIN frame, referrer/permissions policy).
-* Database panel dibuat dengan grant **hanya** pada database panel itu sendiri.
+* Opsi firewall ufw men-deny semua incoming lalu membuka hanya port yang perlu
+  (22/SSH, 80/443 panel, atau 8080/2022 wings + range alokasi). Port **3306 tidak dibuka**.
 * Cron berjalan sebagai root tapi hanya `schedule:run`; aplikasi berjalan sebagai `www-data`.
 
-Untuk hardening penuh (SSH port, fail2ban, dsb) ikuti catatan operasi internal
-RizzDevs — tidak dilakukan otomatis supaya tidak mengunci diri sendiri dari
-server produksi.
+SSH bisa dimigrasikan ke listener kedua yang diperketat (`RIZZDEVS_SSH_PORT`, default `2222`,
+`MaxAuthTries 4`, `X11Forwarding no`, dsb.) lewat prompt saat install atau
+`CONFIGURE_SSH_HARDENING=true`. Port 22 sengaja **tetap** terbuka saat transisi;
+setelah port baru terverifikasi, tutup port 22 secara manual
+(`ufw delete allow 22` lalu hapus `ListenStream=0.0.0.0:22` dari socket override).
+
+Yang **tidak** diubah otomatis (sengaja, supaya tidak mengunci diri sendiri):
+`PermitRootLogin` dan `PasswordAuthentication`. Gunakan SSH key dan nonaktifkan
+password login secara manual setelah memastikan key kamu terpasang.
 
 ---
 

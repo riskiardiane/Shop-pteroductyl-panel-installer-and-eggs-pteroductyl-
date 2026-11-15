@@ -47,6 +47,9 @@ export email="${email:-}"
 
 # Firewall
 export CONFIGURE_FIREWALL="${CONFIGURE_FIREWALL:-false}"
+# Optional second SSH listener on a hardened port (port 22 stays open during transition)
+export CONFIGURE_SSH_HARDENING="${CONFIGURE_SSH_HARDENING:-false}"
+export RIZZDEVS_SSH_PORT="${RIZZDEVS_SSH_PORT:-2222}"
 
 # Allocation range to open (e.g. "25565-25665"), empty = skip
 export ALLOCATION_RANGE="${ALLOCATION_RANGE:-}"
@@ -70,6 +73,8 @@ dep_install() {
   [ "$CONFIGURE_LETSENCRYPT" == true ] && install_packages "certbot"
 
   systemctl enable --now docker >>"$LOG_PATH" 2>&1
+
+  install_fail2ban
 
   success "Dependencies installed!"
 }
@@ -164,6 +169,12 @@ ask_questions() {
       echo -n "* Allocation port range to open (e.g. 25565-25665, empty to skip): "
       read -r ALLOCATION_RANGE
     fi
+  fi
+
+  if [ "$CONFIGURE_SSH_HARDENING" != "true" ]; then
+    echo -n "* Harden SSH (add a hardened listener on port ${RIZZDEVS_SSH_PORT}, keep port 22 open)? (y/N): "
+    read -r ssh_input
+    is_yes "$ssh_input" && CONFIGURE_SSH_HARDENING=true
   fi
 }
 
@@ -368,6 +379,7 @@ perform_install() {
   ask_questions
   [ "$CONFIGURE_FIREWALL" == true ] && install_firewall && firewall_ports
   dep_install
+  [ "$CONFIGURE_SSH_HARDENING" == true ] && configure_ssh_hardening
   docker_network
   wings_dl
   ask_config

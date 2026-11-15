@@ -177,10 +177,156 @@ create_db_user() {
 CREATE USER IF NOT EXISTS '${db_user}'@'127.0.0.1' IDENTIFIED BY '${db_pass}';
 CREATE USER IF NOT EXISTS '${db_user}'@'localhost' IDENTIFIED BY '${db_pass}';
 CREATE DATABASE IF NOT EXISTS \`${db_name}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL PRIVILEGES ON \`${db_name}\`.* TO '${db_user}'@'127.0.0.1' WITH GRANT OPTION;
-GRANT ALL PRIVILEGES ON \`${db_name}\`.* TO '${db_user}'@'localhost' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON \`${db_name}\`.* TO '${db_user}'@'127.0.0.1';
+GRANT ALL PRIVILEGES ON \`${db_name}\`.* TO '${db_user}'@'localhost';
 FLUSH PRIVILEGES;
 SQL
+}
+
+# ---------------- Security hardening helpers ---------------- #
+
+# MariaDB: only listen on the loopback interface and refuse LOAD DATA LOCAL INFILE.
+configure_mariadb_hardening() {
+  output "Hardening MariaDB (loopback-only, local-infile off).."
+  local conf="/etc/mysql/mariadb.conf.d/60-rizzdevs.cnf"
+  if [ -d /etc/mysql/mariadb.conf.d ]; then
+    cp "$conf" "${conf}.bak.$(date +%s)" 2>/dev/null || true
+    cat > "$conf" <<'EOF'
+# RizzDevs hardening (installer)
+[mysqld]
+bind-address=127.0.0.1
+local-infile=0
+EOF
+    if systemctl list-unit-files mariadb.service >/dev/null 2>&1; then
+      systemctl restart mariadb >>"$LOG_PATH" 2>&1 || warning "Could not restart MariaDB with hardened settings (see $LOG_PATH)."
+    fi
+  else
+    warning "MariaDB configuration directory not found — binding unchanged."
+  fi
+}
+
+# PHP-FPM: strict sessions, no path info, errors off. SSL cookie flag is handled
+# by SESSION_SECURE_COOKIE in .env (true when a certificate is configured).
+configure_php_hardening() {
+  output "Hardening PHP-FPM sessions.."
+  local conf="/etc/php/8.3/fpm/conf.d/99-rizzdevs.ini"
+  if [ -d /etc/php/8.3/fpm/conf.d ]; then
+    cat > "$conf" <<'EOF'
+; RizzDevs hardening (installer)
+expose_php = Off
+display_errors = Off
+cgi.fix_pathinfo = 0
+session.use_strict_mode = 1
+session.cookie_httponly = 1
+session.cookie_samesite = Lax
+EOF
+    if systemctl list-unit-files php8.3-fpm.service >/dev/null 2>&1; then
+      systemctl reload php8.3-fpm >>"$LOG_PATH" 2>&1 || systemctl restart php8.3-fpm >>"$LOG_PATH" 2>&1 || true
+    fi
+  fi
+}
+
+# fail2ban: sshd jail (works with systemd journal or auth.log)
+install_fail2ban() {
+  output "Installing fail2ban (sshd brute-force protection).."
+  install_packages "fail2ban"
+
+  local ports="22"
+  if command -v sshd >/dev/null 2>&1; then
+    ports="$(sshd -T 2>/dev/null | awk '/^port /{printf "%s,", $2}' | sed -e 's/,$//' -e 's/^,//')"
+    [ -n "$ports" ] || ports="22"
+  elif [ -n "${SSH_CONNECTION:-}" ]; then
+    local p
+    p="$(echo "${SSH_CONNECTION}" | awk '{print $4}')"
+    [ "$p" != "22" ] && ports="22,$p"
+  fi
+
+  local banaction="iptables-multiport"
+  if command -v ufw >/dev/null 2>&1; then
+    banaction="ufw"
+  fi
+
+  if [ -f /etc/fail2ban/jail.local ] && ! grep -q "RizzDevs hardening" /etc/fail2ban/jail.local; then
+    cp /etc/fail2ban/jail.local /etc/fail2ban/jail.local.bak."$(date +%s)"
+  fi
+
+  cat > /etc/fail2ban/jail.local <<EOF
+# RizzDevs hardening (installer)
+[DEFAULT]
+bantime = 1h
+findtime = 10m
+maxretry = 5
+banaction = ${banaction}
+backend = systemd
+
+[sshd]
+enabled = true
+port = ${ports}
+filter = sshd
+maxretry = 5
+bantime = 1h
+findtime = 10m
+EOF
+  systemctl enable --now fail2ban >>"$LOG_PATH" 2>&1 || warning "Could not enable fail2ban (see $LOG_PATH)."
+  systemctl restart fail2ban >>"$LOG_PATH" 2>&1 || true
+}
+
+# SSH: adds a second hardened listener (default 2222) and tightens sshd options.
+# Port 22 stays open during the transition; remove it manually after verifying
+# that the new port works, to avoid locking yourself out.
+configure_ssh_hardening() {
+  local ssh_port="${RIZZDEVS_SSH_PORT:-2222}"
+  output "Hardening SSH (adding hardened listener on port ${ssh_port}; keeping 22 open).."
+
+  local src="/etc/ssh/sshd_config.d/00-rizzdevs.conf"
+  mkdir -p /etc/ssh/sshd_config.d
+  [ -f "$src" ] && cp "$src" "${src}.bak.$(date +%s)"
+
+  cat > "$src" <<EOF
+# RizzDevs hardening (installer)
+Port 22
+Port ${ssh_port}
+MaxAuthTries 4
+X11Forwarding no
+AllowAgentForwarding no
+AllowTcpForwarding yes
+LoginGraceTime 30
+ClientAliveInterval 300
+ClientAliveCountMax 2
+PermitEmptyPasswords no
+EOF
+  chmod 644 "$src"
+
+  if command -v sshd >/dev/null 2>&1; then
+    sshd -t || fatal "sshd configuration test failed after hardening (check $src)."
+  else
+    fatal "sshd not found — cannot safely harden SSH."
+  fi
+
+  if systemctl list-unit-files ssh.socket >/dev/null 2>&1 && { systemctl is-active --quiet ssh.socket || systemctl is-enabled --quiet ssh.socket; }; then
+    mkdir -p /etc/systemd/system/ssh.socket.d
+    cat > /etc/systemd/system/ssh.socket.d/rizzdevs-listen.conf <<EOF
+# RizzDevs hardening (installer): listen on 22 (transition) and ${ssh_port}
+[Socket]
+ListenStream=
+ListenStream=0.0.0.0:22
+ListenStream=[::]:22
+ListenStream=0.0.0.0:${ssh_port}
+ListenStream=[::]:${ssh_port}
+EOF
+    chmod 644 /etc/systemd/system/ssh.socket.d/rizzdevs-listen.conf
+    systemctl daemon-reload
+    systemctl restart ssh.socket >>"$LOG_PATH" 2>&1 || fatal "Could not restart ssh.socket (see $LOG_PATH)."
+  else
+    systemctl restart ssh >>"$LOG_PATH" 2>&1 || systemctl restart sshd >>"$LOG_PATH" 2>&1 || fatal "Could not restart sshd (see $LOG_PATH)."
+  fi
+
+  if command -v ufw >/dev/null 2>&1; then
+    ufw allow "${ssh_port}/tcp" comment 'SSH hardened' >>"$LOG_PATH" 2>&1 || warning "Could not open port ${ssh_port}/tcp in ufw — open it manually."
+  fi
+  # refresh the fail2ban sshd jail so it covers the new port too
+  install_fail2ban
+  warning "SSH now listens on 22 and ${ssh_port}. Verify the new port in a second session, then remove the port 22 listener and ufw rule."
 }
 
 # ---------------- Misc helpers ---------------- #
