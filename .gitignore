@@ -19,7 +19,6 @@ panel/bootstrap/cache/*.php
 panel/vendor/
 panel/node_modules/
 node_modules/
-vendor/
 
 *.log
 .DS_Store
