@@ -61,7 +61,8 @@ check_supported_os
 
 execute() {
   local target="$1"
-  local log_line="* rizzdevs-installer $(date) — target: $target"
+  local log_line
+  log_line="* rizzdevs-installer $(date) — target: $target"
   echo -e "\n\n$log_line\n\n" >> "$LOG_PATH"
 
   case "$target" in
@@ -70,6 +71,7 @@ execute() {
       source "$REPO_ROOT/installers/panel.sh" 2>/dev/null || source <(curl -fsSL "$RIZZDEVS_RAW_URL/installers/panel.sh")
       ;;
     wings)
+      # shellcheck disable=SC1090
       source "$REPO_ROOT/installers/wings.sh" 2>/dev/null || source <(curl -fsSL "$RIZZDEVS_RAW_URL/installers/wings.sh")
       ;;
   esac
@@ -120,6 +122,7 @@ while [ "$done" == false ]; do
       read -r purge
       args=()
       [ "$purge" == "--purge" ] && args+=("--purge")
+      # shellcheck disable=SC1090
       source "$REPO_ROOT/installers/uninstall.sh" "$what" "${args[@]}" 2>/dev/null \
         || source <(curl -fsSL "$RIZZDEVS_RAW_URL/installers/uninstall.sh") "$what" "${args[@]}"
       ;;

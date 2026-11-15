@@ -155,11 +155,14 @@ update_repos() {
   apt-get update -y >>"$LOG_PATH" 2>&1 || fatal "Failed to update repositories (see $LOG_PATH)."
 }
 
+# First argument: the full package list as a single (possibly multi-line)
+# string. Evaluated (like pterodactyl-installer) so brace expansion in
+# php8.3-{cli,common,...} works correctly.
 install_packages() {
-  # shellcheck disable=SC2068
-  output "Installing packages: $*"
-  DEBIAN_FRONTEND=noninteractive apt-get install -y $@ >>"$LOG_PATH" 2>&1 \
-    || fatal "Failed to install packages: $* (see $LOG_PATH)."
+  output "Installing packages: $1"
+  # shellcheck disable=SC2086
+  eval DEBIAN_FRONTEND=noninteractive apt-get install -y $1 >>"$LOG_PATH" 2>&1 \
+    || fatal "Failed to install packages: $1 (see $LOG_PATH)."
 }
 
 # ---------------- Database helpers ---------------- #
@@ -210,4 +213,13 @@ install_firewall() {
   ufw default deny incoming >>"$LOG_PATH" 2>&1 || true
   ufw default allow outgoing >>"$LOG_PATH" 2>&1 || true
   ufw limit OpenSSH >>"$LOG_PATH" 2>&1 || true
+
+  # Never lock out the session you are installing from: allow the port of the
+  # connection that is running this installer (if it differs from 22).
+  local ssh_port
+  ssh_port="$(echo "${SSH_CONNECTION:-}" | awk '{print $4}')"
+  if [ -n "$ssh_port" ] && [ "$ssh_port" != "22" ]; then
+    ufw allow "$ssh_port"/tcp >>"$LOG_PATH" 2>&1 || true
+    warning "SSH is on port $ssh_port — allowed it in ufw to avoid lockout."
+  fi
 }

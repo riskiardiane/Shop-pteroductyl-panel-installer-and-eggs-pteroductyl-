@@ -440,7 +440,11 @@ perform_install() {
   output ""
   success "AURORA 2.0 Panel installed!"
   output ""
-  output "  Panel URL : http${CONFIGURE_LETSENCRYPT:+s}://$FQDN"
+  local panel_scheme="http"
+  if [ "$ASSUME_SSL" == true ] || [ "$CONFIGURE_LETSENCRYPT" == true ]; then
+    panel_scheme="https"
+  fi
+  output "  Panel URL : ${panel_scheme}://$FQDN"
   output "  Admin user: $user_username ($user_email)"
   output "  Admin pass: $user_password   ← change this after first login"
   output ""
